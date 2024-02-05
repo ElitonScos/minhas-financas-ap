@@ -39,9 +39,9 @@ class UsuarioService extends ApiService {
             erros.push('As senhas não batem.')
         }        
 
-        if(erros && erros.length > 0){
-            throw new ErroValidacao(erros);
-        }
+       if(erros && erros.length > 0){
+        throw new ErroValidacao(erros);
+       }
     }
 
 }

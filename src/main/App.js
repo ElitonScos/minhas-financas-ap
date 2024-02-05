@@ -16,14 +16,14 @@ import 'primeicons/primeicons.css';
 
 class App extends React.Component {
 
-  render(){
-    return(
+ render(){
+   return(
       <ProvedorAutenticacao>
-        <Navbar />
-        <div className="container">    
-            <Rotas />
-        </div>
-      </ProvedorAutenticacao>
+       <Navbar />
+     <div className="container">    
+       <Rotas />
+      </div>
+     </ProvedorAutenticacao>
     )
   }
 }
