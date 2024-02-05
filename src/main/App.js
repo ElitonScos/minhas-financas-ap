@@ -1,24 +1,31 @@
 import React from 'react';
 
 import Rotas from './rotas'
-// import navbar from '../components/navbar';
+import Navbar from '../components/navbar'
+import ProvedorAutenticacao from './provedorAutenticacao'
+
+import 'toastr/build/toastr.min'
 
 import 'bootswatch/dist/flatly/bootstrap.css'
 import '../custom.css'
-// import CadastroUsuario from '../views/cadastroUsuario';
-import Navbar from '../components/navbar';
+import 'toastr/build/toastr.css'
+
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 class App extends React.Component {
-      render(){
-        return(
-            <>
-            <Navbar/>
-        <div className='container'>
-              <Rotas />
+
+  render(){
+    return(
+      <ProvedorAutenticacao>
+        <Navbar />
+        <div className="container">    
+            <Rotas />
         </div>
-        </>
-        )
-      }
+      </ProvedorAutenticacao>
+    )
+  }
 }
 
-export default App;
+export default App

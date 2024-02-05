@@ -1,5 +1,7 @@
-import React from "react";
-import axios from 'axios'
+import React from 'react'
+
+import UsuarioService from '../app/service/usuarioService'
+import { AuthContext } from '../main/provedorAutenticacao'
 
 class Home extends React.Component{
 
@@ -7,13 +9,21 @@ class Home extends React.Component{
         saldo: 0
     }
 
+    constructor(){
+        super()
+        this.usuarioService = new UsuarioService();
+    }
+
     componentDidMount(){
-        axios.get('http//localhost:8080/api/usuarios/1/saldo')
-        .then(Response =>{
-            this.setState({saldo: Response.data})
-        }).catch(error =>{
-            console.error(error.Response)
-        });
+        const usuarioLogado = this.context.usuarioAutenticado
+
+        this.usuarioService
+            .obterSaldoPorUsuario(usuarioLogado.id)
+            .then( response => {
+                this.setState({ saldo: response.data})
+            }).catch(error => {
+                console.error(error.response)
+            });
     }
 
     render(){
@@ -26,7 +36,7 @@ class Home extends React.Component{
                 <p>E essa é sua área administrativa, utilize um dos menus ou botões abaixo para navegar pelo sistema.</p>
                 <p className="lead">
                     <a className="btn btn-primary btn-lg" 
-                    href="#/cadastro-usuarios" 
+                    href="/cadastro-usuarios" 
                     role="button"><i className="pi pi-users"></i>  
                      Cadastrar Usuário
                     </a>
@@ -40,5 +50,7 @@ class Home extends React.Component{
         )
     }
 }
+
+Home.contextType = AuthContext;
 
 export default Home
